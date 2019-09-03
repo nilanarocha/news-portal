@@ -13,5 +13,5 @@
 #
 
 class Author < ApplicationRecord
-  has_many :news
+  belongs_to :news
 end

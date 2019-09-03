@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: news
@@ -15,6 +17,6 @@
 #
 
 class News < ApplicationRecord
-  belongs_to :authors
-  belongs_to :news_categories
+  has_many :author
+  has_many :news_category
 end
