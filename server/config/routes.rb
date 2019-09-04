@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   # API ENDPOINTS
   get '/api/news' => 'api_news#get_news'
+  get '/api/news/:id' => 'api_news#get_single_news'
   get '/api/author' => 'api_news#get_author'
   get '/api/news-category' => 'api_news#get_news_category'
 
