@@ -19,11 +19,16 @@ class ApiNewsController < ApplicationController
     render json: response
   end
 
-  def get_author
+  def get_authors
     limit = nil
     limit = params[:limit] if params[:limit]
 
     @author = Author.all.order('created_at desc').limit(limit)
+    render json: @author
+  end
+
+  def get_author
+    @author = Author.find(params[:id])
     render json: @author
   end
 
