@@ -1,31 +1,27 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import BaseLayout from "./BaseLayout";
-import queryString from "query-string";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
-class SearchPage extends Component {
+class NewsCategoryPage extends Component {
   state = {
-    search: []
+    news: []
   };
 
   async componentDidMount() {
     try {
-      const search = [];
-      const values = queryString.parse(this.props.location.search);
+      const { match } = this.props;
 
-      if (values.search) {
-        search.push(`search=${values.search}`);
-      }
-      if (values.news_category) {
-        search.push(`news_category=${values.news_category}`);
+      const search = [];
+      if (match.params.category) {
+        search.push(`news_category=${match.params.category}`);
       }
 
       const response = await axios.get(
         `http://localhost:3000/api/search?${search.join("&")}`
       );
       this.setState({
-        search: response.data
+        news: response.data
       });
       console.log(response);
     } catch (error) {
@@ -34,14 +30,13 @@ class SearchPage extends Component {
   }
 
   render() {
-    const { search } = this.state;
+    const { news } = this.state;
 
     return (
       <BaseLayout>
         <div>
-          <h1>{search.name}</h1>
-          {search.length > 0 ? (
-            search.map(item => {
+          {news.length > 0 ? (
+            news.map(item => {
               return (
                 <Link key={item.id} to={`/news/${item.id}/${item.title}`}>
                   <div>
@@ -61,4 +56,4 @@ class SearchPage extends Component {
   }
 }
 
-export default SearchPage;
+export default NewsCategoryPage;

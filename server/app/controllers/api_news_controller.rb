@@ -41,9 +41,12 @@ class ApiNewsController < ApplicationController
   end
 
   def get_search
+    limit = nil
+    limit = params[:limit] if params[:limit]
     # Showing the text used for search
     @search = params[:search]
     @news_category = params[:news_category]
+
     sql_complement = []
     # Checking if search was informed via search form
     # if informed, should add to the query
@@ -79,7 +82,9 @@ class ApiNewsController < ApplicationController
     end
 
     # Search all properties with the search title
-    @news = News.where(sql_complement.join(' AND ').to_s).order('created_at desc')
+    @news = News.where(sql_complement.join(' AND ').to_s)
+                .order('created_at desc')
+                .limit(limit)
 
     render json: @news
   end
