@@ -1,7 +1,6 @@
-import React, { Component } from 'react';
-import BaseLayout from './BaseLayout';
-import axios from 'axios';
-
+import React, { Component } from "react";
+import BaseLayout from "./BaseLayout";
+import axios from "axios";
 
 class NewsPage extends Component {
   state = {
@@ -10,7 +9,9 @@ class NewsPage extends Component {
 
   async componentDidMount() {
     try {
-      const response = await axios.get('http://localhost:3000/api/news/1');
+      const response = await axios.get(
+        `http://localhost:3000/api/news/${this.props.match.params.id}`
+      );
       this.setState({
         news: response.data
       });
@@ -36,11 +37,9 @@ class NewsPage extends Component {
           <p>{news.category.name}</p>
           <p>by {news.author.name}</p>
           <div>{news.description}</div>
-
-
         </div>
       </BaseLayout>
-    )
+    );
   }
 }
 

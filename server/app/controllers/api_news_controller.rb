@@ -32,6 +32,11 @@ class ApiNewsController < ApplicationController
     render json: @author
   end
 
+  def get_search
+    @news = News.all.order('created_at desc')
+    render json: @news
+  end
+
   def get_news_category
     limit = nil
     limit = params[:limit] if params[:limit]
