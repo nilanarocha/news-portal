@@ -1,7 +1,6 @@
-import React, { Component } from 'react';
-import BaseLayout from './BaseLayout';
-import axios from 'axios';
-
+import React, { Component } from "react";
+import BaseLayout from "./BaseLayout";
+import axios from "axios";
 
 class AuthorPage extends Component {
   state = {
@@ -10,7 +9,7 @@ class AuthorPage extends Component {
 
   async componentDidMount() {
     try {
-      const response = await axios.get('http://localhost:3000/api/author/2');
+      const response = await axios.get("http://localhost:3000/api/author/2");
       this.setState({
         author: response.data
       });
@@ -29,12 +28,12 @@ class AuthorPage extends Component {
     return (
       <BaseLayout>
         <div>
-          <img src={author.image} width="200" />
+          <img src={author.image} width="200" alt={author.name} />
           <h1>{author.name}</h1>
           <div>{author.description}</div>
         </div>
       </BaseLayout>
-    )
+    );
   }
 }
 

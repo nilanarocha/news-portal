@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import BaseLayout from "./BaseLayout";
 import queryString from "query-string";
 import axios from "axios";
+import SearchForm from "../components/search-form/SearchForm";
 
 class SearchPage extends Component {
   state = {
@@ -40,6 +41,7 @@ class SearchPage extends Component {
       <BaseLayout>
         <div>
           <h1>{search.name}</h1>
+          <SearchForm />
           {search.length > 0 ? (
             search.map(item => {
               return (

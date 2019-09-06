@@ -30,7 +30,7 @@ class NewsPage extends Component {
     return (
       <BaseLayout>
         <div>
-          <img src={news.image} width="200" />
+          <img src={news.image} width="200" alt={news.title} />
           <h1>{news.title}</h1>
           <p>{news.headline}</p>
           <p>{news.date}</p>

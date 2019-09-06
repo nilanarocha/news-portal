@@ -5,24 +5,24 @@ import queryString from "query-string";
 class BaseSearchForm extends Component {
   constructor(props) {
     super(props);
-    this.state = { value: "" };
+    this.state = { searchText: "" };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
   componentDidMount() {
     const values = queryString.parse(this.props.location.search);
-    this.setState({ value: values.search });
+    this.setState({ searchText: values.search });
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    const { value } = this.state;
-    this.props.history.push(`/search?search=${value}`);
+    const { searchText } = this.state;
+    this.props.history.push(`/search?search=${searchText}`);
     window.location.reload();
   }
 
   handleChange(event) {
-    this.setState({ value: event.target.value });
+    this.setState({ searchText: event.target.value });
   }
 
   render() {
@@ -36,7 +36,7 @@ class BaseSearchForm extends Component {
               type="search"
               name="search"
               id="search"
-              value={this.state.value}
+              value={this.state.searchText || ""}
               onChange={this.handleChange}
             />
           </div>

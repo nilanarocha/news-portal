@@ -1,5 +1,9 @@
 <p id="notice"><%= notice %></p>
 <h1>News</h1>
+<%= link_to '+ New', new_news_path, class: "controls-link block" %>
+<br>
+<br>
+<br>
 <table>
   <thead>
     <tr>
@@ -15,10 +19,10 @@
     <% @news.each do |news| %>
       <tr>
         <td><%= news.title %></td>
-        <td><%= news.headline %></td>
+        <td><%= "#{news.headline.first(80)} (...)" %></td>
         <td><%= news.image %></td>
         <td><%= news.date %></td>
-        <td><%= news.description %></td>
+        <td><%= "#{news.description.first(100)} (...)" %></td>
         <td><%= link_to 'Show', news %></td>
         <td><%= link_to 'Edit', edit_news_path(news) %></td>
         <td><%= link_to 'Destroy', news, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -27,4 +31,3 @@
   </tbody>
 </table>
 <br>
-<%= link_to 'New News', new_news_path %>

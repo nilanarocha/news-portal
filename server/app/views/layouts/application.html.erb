@@ -4,12 +4,27 @@
     <title>NewPortalServer</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <%# <link rel="stylesheet" href="/css/style.css"> %>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
   </head>
-
   <body>
-    <%= yield %>
+    <div class="menu">
+      <nav class="default-margin">
+        <ul>
+          <li class="margin-left0"><a href="/authors">Authors</a></li>
+          <li><a href="/news">News</a></li>
+          <li><a href="/news_categories">Categories</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="main container default-margin">
+      <%= yield %>
+    </div>
+    <footer>
+      <p class="default-margin">Built with ♥ by Nilana Rocha, 2019</p>
+    </footer>
   </body>
 </html>

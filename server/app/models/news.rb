@@ -17,6 +17,8 @@
 #
 
 class News < ApplicationRecord
-  has_many :author
-  has_many :news_category
+  # has_many :author
+  # has_many :news_category
+  belongs_to :author, class_name: 'Author', optional: true
+  belongs_to :news_category, class_name: 'NewsCategory', optional: true
 end
