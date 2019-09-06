@@ -9,7 +9,9 @@ class AuthorPage extends Component {
 
   async componentDidMount() {
     try {
-      const response = await axios.get("http://localhost:3000/api/author/2");
+      const response = await axios.get(
+        `http://localhost:3000/api/author/${this.props.match.params.id}`
+      );
       this.setState({
         author: response.data
       });

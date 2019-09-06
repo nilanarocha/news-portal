@@ -5,6 +5,10 @@ import queryString from "query-string";
 import axios from "axios";
 import SearchForm from "../components/search-form/SearchForm";
 
+import { returnMaxWordsInText } from "../helpers/truncate-words-in-text";
+
+const MAX_WORDS_TO_SHOW_IN_NEWS_DESCRIPTION = 20;
+
 class SearchPage extends Component {
   state = {
     search: []
@@ -49,7 +53,12 @@ class SearchPage extends Component {
                   <div>
                     <img src={item.image} alt="author" width="100" />
                     <h3>{item.title}</h3>
-                    <div>{item.description}</div>
+                    <div>
+                      {returnMaxWordsInText(
+                        item.description,
+                        MAX_WORDS_TO_SHOW_IN_NEWS_DESCRIPTION
+                      )}
+                    </div>
                   </div>
                 </Link>
               );

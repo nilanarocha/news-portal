@@ -8,7 +8,9 @@ class Header extends Component {
     return (
       <header>
         <Link to="/">Home</Link>
-        <Link to="/author">Author</Link>
+        <Link to="/news/world">World</Link>
+        <Link to="/news/entertainment">Entertainment</Link>
+        <Link to="/author">Authors</Link>
         <Link to="/search">Search</Link>
         <SearchForm />
       </header>

@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import BaseLayout from "./BaseLayout";
 import axios from "axios";
+import { formatDate } from "../helpers/format-date";
+import { Link } from "react-router-dom";
 
 class NewsPage extends Component {
   state = {
@@ -32,10 +34,13 @@ class NewsPage extends Component {
         <div>
           <img src={news.image} width="200" alt={news.title} />
           <h1>{news.title}</h1>
+          <p>
+            {news.category.name} -{" "}
+            <Link to={`/author/${news.authors_id}`}>By {news.author.name}</Link>
+            , {formatDate(news.date)}{" "}
+          </p>
           <p>{news.headline}</p>
-          <p>{news.date}</p>
-          <p>{news.category.name}</p>
-          <p>by {news.author.name}</p>
+
           <div>{news.description}</div>
         </div>
       </BaseLayout>

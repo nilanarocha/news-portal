@@ -62,12 +62,20 @@ class ApiNewsController < ApplicationController
                                else
                                  ''
                                end
+
+      sql_news_category_complement = if @news_category.any?
+                                       "OR news_categories_id=#{NewsCategory.find_by('LOWER(name)= ?', @search.downcase).id}"
+                                     else
+                                       ''
+                                    end
+
       # searching case insensitive "LOWER(title) LIKE LOWER('%#{@search}%')"
       sql_complement.push(
         "
   (LOWER(title) LIKE LOWER('%#{@search}%')
   OR LOWER(description) LIKE LOWER('%#{@search}%')
   OR LOWER(headline) LIKE LOWER('%#{@search}%')
+  #{sql_news_category_complement}
   #{sql_authors_complement}
   )
   "
@@ -78,7 +86,7 @@ class ApiNewsController < ApplicationController
     # if informed, should add to the query
     if !@news_category.blank? && @news_category != 'all'
       # seaching only for the specified property type
-      sql_complement.push("news_categories_id=#{NewsCategory.find_by(name: @news_category).id}")
+      sql_complement.push("news_categories_id=#{NewsCategory.find_by('LOWER(name)= ?', @news_category.downcase).id}")
     end
 
     # Search all properties with the search title
