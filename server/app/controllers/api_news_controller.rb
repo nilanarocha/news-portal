@@ -1,6 +1,15 @@
 # frozen_string_literal: true
 
 class ApiNewsController < ApplicationController
+  def get_news_by_author_id
+    limit = 5
+    limit = params[:limit] if params[:limit]
+
+    @author_id = params[:id]
+    @news = News.where(authors_id: @author_id).order('created_at desc').limit(limit)
+    render json: @news
+  end
+
   def get_news
     limit = nil
     limit = params[:limit] if params[:limit]
