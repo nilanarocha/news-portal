@@ -16,6 +16,13 @@
   <div class="field">
     <%= form.label :image %>
     <%= form.text_field :image %>
+    <% if author.image.present? %>
+      <br>
+      <br>
+      <%= image_tag author.image, width: 300 %>
+      <br>
+      <br>
+    <% end %>
   </div>
   <div class="field">
     <%= form.label :description %>

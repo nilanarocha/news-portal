@@ -7,10 +7,12 @@
   <strong>Headline:</strong>
   <%= @news.headline %>
 </p>
-<p>
-  <strong>Image:</strong>
-  <%= @news.image %>
-</p>
+<% if @news.image.present? %>
+  <p>
+    <strong>Image:</strong>
+    <%= image_tag @news.image, width: 300 %>
+  </p>
+<% end %>
 <p>
   <strong>Date:</strong>
   <%= @news.date %>

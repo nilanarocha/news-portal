@@ -1,19 +1,17 @@
 <p id="notice"><%= notice %></p>
-
 <p>
   <strong>Name:</strong>
   <%= @author.name %>
 </p>
-
-<p>
-  <strong>Image:</strong>
-  <%= @author.image %>
-</p>
-
+<% if @author.image.present? %>
+  <p>
+    <strong>Image:</strong>
+    <%= image_tag @author.image, width: 300 %>
+  </p>
+<% end %>
 <p>
   <strong>Description:</strong>
   <%= @author.description %>
 </p>
-
 <%= link_to 'Edit', edit_author_path(@author) %> |
 <%= link_to 'Back', authors_path %>

@@ -67,6 +67,7 @@ a {
   color: rgb(104, 109, 109);
 }
 
+/* FORM */
 textarea {
   width: 490px;
   height: 300px;
@@ -86,6 +87,24 @@ select {
   width: 500px;
 }
 
+form .actions {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+form img {
+  margin-left: 110px;
+}
+
+.field {
+  margin-top: 20px;
+}
+
+.field label {
+  width: 100px;
+  display: inline-block;
+}
+
 .form-item {
   padding: 10px;
 }
@@ -96,6 +115,7 @@ select {
   margin: 10px;
 }
 
+/* FORM */
 .controls-link {
   text-decoration: none;
   color: white;
